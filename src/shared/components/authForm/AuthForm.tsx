@@ -32,7 +32,7 @@ const AuthForm = () => {
           description: "Have a nice day!",
           className: styles['toast-success']
         })
-        navigate(`/label/overview`, {replace: true});
+        navigate(`/adver/overview`, {replace: true});
       },
 
       onError: ()=> {

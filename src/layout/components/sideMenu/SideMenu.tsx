@@ -1,8 +1,7 @@
 import styles from "./styles.module.scss";
 import SideBtn from "./sideBtn/SideBtn";
 import { RiDashboardHorizontalFill } from "react-icons/ri";
-import { HiUsers } from "react-icons/hi";
-import { FaUser } from "react-icons/fa6";
+import { FaAdversal} from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
 import LogoutButton from "../logoutButton/LogoutButton";
 
@@ -13,7 +12,7 @@ const SideMenu = () => {
         <div className={styles.logo}>
           <span>Monotone</span>
           <span>
-            Studio <span className={styles.role}>label</span>
+            Studio <span className={styles.role}>advertiser</span>
           </span>
         </div>
 
@@ -22,20 +21,20 @@ const SideMenu = () => {
             icon={RiDashboardHorizontalFill}
             iconHovered={RiDashboardHorizontalFill}
             title="Overview"
-            to="/label/overview"
+            to="/adver/overview"
+          />
+          <SideBtn
+            icon={FaAdversal}
+            iconHovered={FaAdversal}
+            title="Upload"
+            to="/adver/uploader"
           />
           {/* <SideBtn
-            icon={HiUsers}
-            iconHovered={HiUsers}
-            title="Accounts"
-            to="/label/accounts-management"
+            icon={FaCcStripe}
+            iconHovered={FaCcStripe}
+            title="Payment"
+            to="/adver/payment"
           /> */}
-          <SideBtn
-            icon={FaUser}
-            iconHovered={FaUser}
-            title="Upload"
-            to="/label/uploader"
-          />
         </div>
       </div>
       <div className={styles.bottom}>

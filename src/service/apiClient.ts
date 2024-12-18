@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { refreshTokenApi2 } from './authService';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction } from 'react-router-dom';
+import { toast } from '@/hooks/use-toast';
 
 const apiClient = axios.create({
     baseURL: import.meta.env.VITE_SERVER_TEST_URL,
@@ -12,7 +13,13 @@ const apiClient = axios.create({
 let isRefreshing = false;
 let refreshSubscribers: ((token: string) => void)[] = [];
 
-const onRrefreshed = (token: string) => {
+let navigate: NavigateFunction;
+
+export const setNavigate = (nav: NavigateFunction) => {
+  navigate = nav;
+};
+
+const onRefreshed = (token: string) => {
     refreshSubscribers.forEach(callback => callback(token));
     refreshSubscribers = [];
 };
@@ -45,20 +52,30 @@ apiClient.interceptors.response.use(
                 isRefreshing = true;
                 originalRequest._retry = true;
                 try {
+                    // throw new Error('Token refresh failed');
                     const data = await refreshTokenApi2();
                     localStorage.setItem('token', data.accessToken);
                     apiClient.defaults.headers.common['Authorization'] = `Bearer ${data.accessToken}`;
                     isRefreshing = false;
-                    onRrefreshed(data.accessToken);
+                    onRefreshed(data.accessToken);
                     return apiClient(originalRequest);
                 } catch (refreshError) {
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('refreshToken');
-                    const navigate = useNavigate();
-                    navigate('/auth/sign-in', { replace: true });
+                    // localStorage.removeItem('token');
+                    // localStorage.removeItem('refreshToken');
+                    console.error('Refresh token has expired. Please log in again.');
+                    // window.location.href = '/auth/sign-in';
                     return Promise.reject(refreshError);
                 }
             } else {
+                console.log('Waiting for refresh token');
+                toast({
+                    variant: "destructive",
+                    duration: 3000,
+                    title: "Your login session has expired.",
+                    description: "Please log in again.",
+                    className: 'bg-red-500 text-white',
+                  });
+                navigate('/auth/sign-in');
                 return new Promise((resolve) => {
                     addRefreshSubscriber((token: string) => {
                         originalRequest.headers['Authorization'] = `Bearer ${token}`;
@@ -67,6 +84,7 @@ apiClient.interceptors.response.use(
                 });
             }
         }
+        
         return Promise.reject(error);
     }
 );
