@@ -55,6 +55,7 @@ apiClient.interceptors.response.use(
                     // throw new Error('Token refresh failed');
                     const data = await refreshTokenApi2();
                     localStorage.setItem('token', data.accessToken);
+                    localStorage.setItem('refreshToken', data.refreshToken);
                     apiClient.defaults.headers.common['Authorization'] = `Bearer ${data.accessToken}`;
                     isRefreshing = false;
                     onRefreshed(data.accessToken);
