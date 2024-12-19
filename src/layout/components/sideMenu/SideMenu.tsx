@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import SideBtn from "./sideBtn/SideBtn";
 import { RiDashboardHorizontalFill } from "react-icons/ri";
-import { FaAdversal} from "react-icons/fa6";
+import { FaAdversal, FaUser} from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
 import LogoutButton from "../logoutButton/LogoutButton";
 
@@ -29,12 +29,12 @@ const SideMenu = () => {
             title="Upload"
             to="/adver/uploader"
           />
-          {/* <SideBtn
-            icon={FaCcStripe}
-            iconHovered={FaCcStripe}
-            title="Payment"
-            to="/adver/payment"
-          /> */}
+          <SideBtn
+            icon={FaUser}
+            iconHovered={FaUser}
+            title="Manager"
+            to="/adver/manager"
+          />
         </div>
       </div>
       <div className={styles.bottom}>

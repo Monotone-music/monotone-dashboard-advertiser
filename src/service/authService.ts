@@ -26,3 +26,13 @@ export const getProfile = async () => {
     return response.data.data;
 }
 
+export const getTop = async () => {
+    const response = await apiClient.get('/advertiser/top');
+    return response.data.data;
+}
+
+export const getStats = async () => {
+    const response = await apiClient.get('/advertiser/statistics');
+    return response.data.data;
+}
+
