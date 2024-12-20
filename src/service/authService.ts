@@ -36,3 +36,8 @@ export const getStats = async () => {
     return response.data.data;
 }
 
+export const getChart = async () => {
+    const response = await apiClient.get('/advertiser/graph');
+    return response.data.data;
+}
+
