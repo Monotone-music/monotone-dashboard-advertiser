@@ -1,5 +1,6 @@
 // router.tsx
-import { createBrowserRouter, Navigate } from "react-router-dom";8import RootLayout from "@/layout/Root/RootLayout";
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import RootLayout from "@/layout/Root/RootLayout";
 import Unauthorized from "@/page/Unauthorized/Unauthorized";
 import HomePage from "@/page/Admin/Home/HomePage";
 import Profile from "@/page/Admin/Profile/Profile";

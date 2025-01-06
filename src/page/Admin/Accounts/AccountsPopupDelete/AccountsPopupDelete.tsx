@@ -1,10 +1,9 @@
-import React from "react";
 import styles from "./styles.module.scss";
 import { Button } from "@/components/ui/button";
 import useAccountStore from "@/store/useAccountStore";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteAccountsByIds } from "@/service/adminService";
-import useAuthStore from "@/store/useAuthStore";
+import {useAuthStore} from "@/store/useAuthStore";
 import { useToast } from "@/hooks/use-toast";
 
 const AccountsPopupDelete = () => {

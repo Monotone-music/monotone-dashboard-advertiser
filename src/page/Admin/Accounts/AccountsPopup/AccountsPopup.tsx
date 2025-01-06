@@ -4,7 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useQuery } from "@tanstack/react-query";
 import { Switch } from "@/components/ui/switch";
-import useAuthStore from "@/store/useAuthStore";
+import {useAuthStore} from "@/store/useAuthStore";
 import { getAccountsById } from "@/service/adminService";
 import PuffLoader from "react-spinners/PuffLoader";
 import { convertToTimezone } from "@/util/ConvertISODate";

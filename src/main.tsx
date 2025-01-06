@@ -17,7 +17,6 @@ import Payment from "./page/Payment/Payment";
 import { useEffect } from "react";
 import { setNavigate } from "./service/apiClient";
 import ManagerPage from "./page/Manager/ManagerPage";
-// import router from "./util/Router";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 5, retryDelay: 1000 } },

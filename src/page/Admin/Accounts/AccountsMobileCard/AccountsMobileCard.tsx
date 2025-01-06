@@ -9,7 +9,7 @@ interface AccountsMobileCard {
     id: string;
 }
 
-const AccountsMobileCard:React.FC<AccountsMobileCard> = ({displayName, username, img, id}) => {
+const AccountsMobileCard:React.FC<AccountsMobileCard> = ({displayName, username, id}) => {
       const {setId, setShowPopup} = useAccountStore()
     const handleRowClick = (accountId: string) => {
       setId(accountId);

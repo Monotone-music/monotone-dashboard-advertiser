@@ -1,6 +1,6 @@
 import HomePage from "@/page/Admin/Home/HomePage";
 import HomeArtist from "@/page/Artist/Home/HomeArtist";
-import useAuthStore from "@/store/useAuthStore";
+import {useAuthStore} from "@/store/useAuthStore";
 import React from "react";
 import { useParams, Navigate } from "react-router-dom";
 

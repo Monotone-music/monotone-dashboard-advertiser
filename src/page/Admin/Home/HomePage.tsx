@@ -164,7 +164,7 @@ const HomePage = () => {
       </Card>
 
       <div className={`${isCollapsed ? "pt-[80px]" : "pt-[200px]"}`}>
-        <TitlePage title={["Overview", "Dashboard"]} />
+        <TitlePage title={["Dashboard", "Overview"]} />
 
         <section className={styles["analytic-section"]}>
           {isLoading ? (
@@ -217,7 +217,7 @@ const HomePage = () => {
           </div>
 
           <div className={styles["top-section"]}>
-            <TitlePage title={["Top Songs"]} />
+            <TitlePage title={["Top Advertisements"]} />
             <OverviewRankSong />
           </div>
         </section>
