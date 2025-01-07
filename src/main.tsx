@@ -17,6 +17,7 @@ import Payment from "./page/Payment/Payment";
 import { useEffect } from "react";
 import { setNavigate } from "./service/apiClient";
 import ManagerPage from "./page/Manager/ManagerPage";
+import Register from "./page/Register/Register";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 5, retryDelay: 1000 } },
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/auth/sign-in",
     element: <NavigationWrapper><AuthPage /></NavigationWrapper>,
+  },
+  {
+    path: "/auth/sign-up",
+    element: <NavigationWrapper><Register /></NavigationWrapper>,
   },
   {
     path: "/adver",

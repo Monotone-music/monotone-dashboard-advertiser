@@ -1,9 +1,14 @@
 import { LoginData } from "@/interface/Login";
 import apiClient from "./apiClient";
+import { RegisterData } from "@/interface/Register";
 // import { useNavigate } from "react-router-dom";
 
 export const signIn = async (data: LoginData) => {
     return (await apiClient.post('/auth/login?flag=advertiser', data));
+}
+
+export const signUp = async (data: RegisterData) => {
+  return (await apiClient.post('/account/register?type=advertiser', data))
 }
 
 export const refreshTokenApi2 = async () => {

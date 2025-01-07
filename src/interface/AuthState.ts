@@ -19,6 +19,13 @@ export interface ISignInForm {
   password: string;
 }
 
+export interface ISignUpForm {
+  username: string;
+  password: string;
+  displayName: string;
+  email: string;
+}
+
 export const SignInSchema = yup
   .object({
     username: yup.string().required(),

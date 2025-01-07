@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.forgot-password {
+  width: 100%;
+  text-align: center;
+
+  .link {
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+
+.submit-btn {
+  height: 50px;
+  margin-top: 40px;
+}
+
+.toast-success {
+  background-color: #43a047;
+  color: white;
+}
+
+.toast-failed {
+  background-color: #e53935;
+  color: white;
+}
