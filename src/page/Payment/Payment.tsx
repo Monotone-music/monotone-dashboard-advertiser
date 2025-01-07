@@ -67,7 +67,7 @@ const Payment: React.FC = () => {
     }
     const token = localStorage.getItem('token');
     const paymentBody = {
-      amount: totalPrice * 100,
+      amount: Math.round(parseFloat(totalPrice) * 100),
       currency: "usd",
       metadata: {
         token: token,
@@ -90,8 +90,8 @@ const Payment: React.FC = () => {
         className: styles["toast-error"],
       });
     }
-  };
 
+  };
   const handlePaymentSuccess = () => {
     toast({
       variant: "default",
@@ -115,7 +115,7 @@ const Payment: React.FC = () => {
     setIsModalOpen(false);
   };
 
-  const totalPrice = views * 0.05;
+  const totalPrice = (views * 0.05).toFixed(2);
 
   return (
     <div className="w-full max-w-md mx-auto">
@@ -132,7 +132,7 @@ const Payment: React.FC = () => {
             className="p-2 mt-1 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
           />
         </form>
-        <p className="mb-4">Total Price: ${totalPrice.toFixed(2)}</p>
+        <p className="mb-4">Total Price: ${totalPrice}</p>
         <Dialog
           open={isModalOpen}
           onOpenChange={(open) => {
@@ -161,7 +161,7 @@ const Payment: React.FC = () => {
             {clientSecret && options && (
               <Elements stripe={stripePromise} options={options}>
                 <CheckoutForm
-                  price={totalPrice}
+                  price={parseFloat(totalPrice)}
                   onSuccess={handlePaymentSuccess}
                   onError={handlePaymentError}
                 />
@@ -175,4 +175,6 @@ const Payment: React.FC = () => {
       </div>
     </div>
   );
-};export default Payment;
+};
+
+export default Payment;
